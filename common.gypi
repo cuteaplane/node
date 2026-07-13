@@ -702,6 +702,11 @@
           '-Wl,--export-dynamic',
         ],
       }],
+      ['OS=="haiku"', {
+        'cflags_cc': [
+          '-std=gnu++20',
+        ],
+      }],
       # if node is built as an executable,
       #      the openssl mechanism for keeping itself "dload"-ed to ensure proper
       #      atexit cleanup does not apply
