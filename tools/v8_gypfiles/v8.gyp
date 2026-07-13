@@ -706,7 +706,7 @@
               }],
               ['v8_enable_webassembly==1', {
                 'conditions': [
-                  ['OS in "linux mac ios freebsd openharmony"', {
+                  ['OS in "linux mac ios freebsd openharmony haiku"', {
                     'sources': [
                       '<(V8_ROOT)/src/trap-handler/handler-inside-posix.h',
                     ],
@@ -1170,7 +1170,7 @@
             }],
             ['v8_enable_webassembly==1', {
               'conditions': [
-                ['OS in "linux mac ios freebsd openharmony"', {
+                ['OS in "linux mac ios freebsd openharmony haiku"', {
                   'sources': [
                     '<(V8_ROOT)/src/trap-handler/handler-inside-posix.cc',
                     '<(V8_ROOT)/src/trap-handler/handler-outside-posix.cc',
@@ -1650,6 +1650,22 @@
           'sources': [
             '<(V8_ROOT)/src/base/debug/stack_trace_posix.cc',
             '<(V8_ROOT)/src/base/platform/platform-openbsd.cc',
+            '<(V8_ROOT)/src/base/platform/platform-posix.h',
+            '<(V8_ROOT)/src/base/platform/platform-posix.cc',
+            '<(V8_ROOT)/src/base/platform/platform-posix-time.h',
+            '<(V8_ROOT)/src/base/platform/platform-posix-time.cc',
+          ],
+        }
+         ],
+        ['OS=="haiku"', {
+          'link_settings': {
+            'libraries': [
+              '-lnetwork',
+            ]
+          },
+          'sources': [
+            '<(V8_ROOT)/src/base/debug/stack_trace_posix.cc',
+            '<(V8_ROOT)/src/base/platform/platform-haiku.cc',
             '<(V8_ROOT)/src/base/platform/platform-posix.h',
             '<(V8_ROOT)/src/base/platform/platform-posix.cc',
             '<(V8_ROOT)/src/base/platform/platform-posix-time.h',

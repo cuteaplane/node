@@ -313,6 +313,15 @@
         'NODE_PLATFORM="sunos"',
       ],
     }],
+    [ 'OS=="haiku"', {
+      'defines': [
+        'NODE_PLATFORM="haiku"',
+      ],
+      'libraries': [
+        '-lbsd',
+        '-lnetwork',
+      ],
+    }],
     [ '(OS=="freebsd" or OS=="linux" or OS=="openharmony") and node_shared=="false"'
         ' and force_load=="true"', {
       'ldflags': [

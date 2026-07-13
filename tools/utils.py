@@ -69,6 +69,8 @@ def GuessOS():
     # Doing so on purpose as they are pretty close
     # minus few features
     return 'freebsd'
+  elif id == 'Haiku':
+    return 'haiku'
   elif id == 'AIX':
     return 'aix'
   elif id == 'OS400':

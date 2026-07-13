@@ -560,10 +560,19 @@ void ResetSignalHandlers() {
       // library) has set up own signal handler for own purposes
       // (e.g. profiling). If that's the case, we want to keep it intact.
       struct sigaction old;
+#ifdef __HAIKU__
+      int r = sigaction(nr, nullptr, &old);
+      if (r != 0) continue;
+#else
       CHECK_EQ(0, sigaction(nr, nullptr, &old));
+#endif
       if ((old.sa_flags & SA_SIGINFO) || old.sa_handler != SIG_IGN) continue;
     }
+#ifdef __HAIKU__
+    sigaction(nr, &act, nullptr);
+#else
     CHECK_EQ(0, sigaction(nr, &act, nullptr));
+#endif
   }
 #endif  // __POSIX__
 }

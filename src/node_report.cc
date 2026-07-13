@@ -737,16 +737,16 @@ static void PrintSystemInformation(JSONWriter* writer) {
 #if !(defined(_AIX) || defined(__sun))
     {"max_locked_memory_bytes", RLIMIT_MEMLOCK},
 #endif
-#ifndef __sun
+#if !defined(__sun) && !defined(__HAIKU__)
     {"max_memory_size_bytes", RLIMIT_RSS},
 #endif
     {"open_files", RLIMIT_NOFILE},
     {"stack_size_bytes", RLIMIT_STACK},
     {"cpu_time_seconds", RLIMIT_CPU},
-#ifndef __sun
+#if !defined(__sun) && !defined(__HAIKU__)
     {"max_user_processes", RLIMIT_NPROC},
 #endif
-#ifndef __OpenBSD__
+#if !defined(__OpenBSD__) && !defined(__HAIKU__)
     {"virtual_memory_bytes", RLIMIT_AS}
 #endif
   };
