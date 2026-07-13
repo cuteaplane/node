@@ -461,6 +461,11 @@ pid_t GetTID() {
   return reinterpret_cast<pid_t>(thread);
 }
 
+#elif defined(__HAIKU__)
+
+#include <OS.h>
+pid_t GetTID() { return static_cast<pid_t>(find_thread(nullptr)); }
+
 #else
 
 // Fallback implementation of `GetTID` using `pthread_self`.
