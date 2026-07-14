@@ -734,7 +734,7 @@ static void PrintSystemInformation(JSONWriter* writer) {
     {"core_file_size_blocks", RLIMIT_CORE},
     {"data_seg_size_bytes", RLIMIT_DATA},
     {"file_size_blocks", RLIMIT_FSIZE},
-#if !(defined(_AIX) || defined(__sun))
+#if !(defined(_AIX) || defined(__sun) || defined(__HAIKU__))
     {"max_locked_memory_bytes", RLIMIT_MEMLOCK},
 #endif
 #if !defined(__sun) && !defined(__HAIKU__)
