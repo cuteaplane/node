@@ -192,7 +192,8 @@ path. Add it with -I<path> to the command line
   && !defined(V8_TARGET_OS_LINUX) \
   && !defined(V8_TARGET_OS_MACOS) \
   && !defined(V8_TARGET_OS_WIN) \
-  && !defined(V8_TARGET_OS_CHROMEOS)
+  && !defined(V8_TARGET_OS_CHROMEOS) \
+  && !defined(V8_TARGET_OS_HAIKU)
 #  error No known target OS defined.
 # endif
 
@@ -204,7 +205,8 @@ path. Add it with -I<path> to the command line
   || defined(V8_TARGET_OS_LINUX) \
   || defined(V8_TARGET_OS_MACOS) \
   || defined(V8_TARGET_OS_WIN) \
-  || defined(V8_TARGET_OS_CHROMEOS)
+  || defined(V8_TARGET_OS_CHROMEOS) \
+  || defined(V8_TARGET_OS_HAIKU)
 #  error A target OS is defined but V8_HAVE_TARGET_OS is unset.
 # endif
 
