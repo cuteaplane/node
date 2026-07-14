@@ -38,7 +38,7 @@
 /* #undef GETSERVBYNAME_R_ARGS */
 
 /* number of arguments for getservbyport_r() */
-#define GETSERVBYPORT_R_ARGS 6 
+/* #undef GETSERVBYPORT_R_ARGS */
 
 /* Define to 1 if you have AF_INET6 */
 #define HAVE_AF_INET6 1

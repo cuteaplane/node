@@ -1368,8 +1368,8 @@ Stack::StackSlot Stack::ObtainCurrentThreadStackStart() {
   }
 #endif  // !defined(V8_LIBC_GLIBC)
   return stack_start;
-}
 #endif  // !defined(__HAIKU__)
+}
 
 #endif  // !defined(V8_OS_FREEBSD) && !defined(V8_OS_DARWIN) &&
         // !defined(_AIX) && !defined(V8_OS_SOLARIS)
