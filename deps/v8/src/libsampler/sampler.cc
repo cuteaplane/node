@@ -26,9 +26,12 @@
 
 #elif V8_OS_DARWIN
 #include <mach/mach.h>
-// OpenBSD doesn't have <ucontext.h>. ucontext_t lives in <signal.h>
-// and is a typedef for struct sigcontext. There is no uc_mcontext.
-#elif !V8_OS_OPENBSD
+#elif V8_OS_OPENBSD || V8_OS_HAIKU
+// OpenBSD and Haiku don't have <ucontext.h>.
+// ucontext_t lives in <signal.h> on OpenBSD.
+// On Haiku we don't use ucontext.
+#include <signal.h>
+#else
 #include <ucontext.h>
 #endif
 
