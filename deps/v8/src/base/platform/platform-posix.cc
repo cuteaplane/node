@@ -1335,6 +1335,10 @@ bool MainThreadIsCurrentThread() {
 
 // static
 Stack::StackSlot Stack::ObtainCurrentThreadStackStart() {
+#if defined(__HAIKU__)
+  // On Haiku, implemented in platform-haiku.cc via get_thread_info.
+  return nullptr;
+#else
   pthread_attr_t attr;
   int error = pthread_getattr_np(pthread_self(), &attr);
   if (error) {
@@ -1365,6 +1369,7 @@ Stack::StackSlot Stack::ObtainCurrentThreadStackStart() {
 #endif  // !defined(V8_LIBC_GLIBC)
   return stack_start;
 }
+#endif  // !defined(__HAIKU__)
 
 #endif  // !defined(V8_OS_FREEBSD) && !defined(V8_OS_DARWIN) &&
         // !defined(_AIX) && !defined(V8_OS_SOLARIS)
