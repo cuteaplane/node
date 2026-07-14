@@ -16,7 +16,7 @@
 #include <sys/time.h>
 #include <atomic>
 
-#if !V8_OS_QNX && !V8_OS_AIX
+#if !V8_OS_QNX && !V8_OS_AIX && !V8_OS_HAIKU
 #include <sys/syscall.h>
 #endif
 
