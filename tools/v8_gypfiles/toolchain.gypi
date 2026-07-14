@@ -611,6 +611,12 @@
           'V8_TARGET_OS_WIN',
         ]
       }],
+      ['OS=="haiku"', {
+        'defines': [
+          'V8_HAVE_TARGET_OS',
+          'V8_TARGET_OS_HAIKU',
+        ]
+      }],
       ['OS in "linux freebsd openbsd solaris netbsd mac android qnx openharmony" and v8_target_arch=="ia32"', {
         'cflags': [
           '-msse2',
@@ -767,7 +773,7 @@
               'v8_enable_slow_dchecks%': 1,
             },
             'conditions': [
-              ['OS in "linux freebsd openbsd netbsd qnx aix os400 openharmony"', {
+              ['OS in "linux freebsd openbsd netbsd qnx aix os400 openharmony haiku"', {
                 'cflags!': [
                   '-O3',
                   '-O2',
@@ -817,7 +823,7 @@
               'v8_enable_slow_dchecks%': 0,
             },
             'conditions': [
-              ['OS in "linux freebsd openbsd netbsd qnx aix os400 openharmony"', {
+              ['OS in "linux freebsd openbsd netbsd qnx aix os400 openharmony haiku"', {
                 'cflags!': [
                   '-O0',
                   '-O1',
@@ -865,7 +871,7 @@
          # Temporary refs: https://github.com/nodejs/node/pull/23801
         'defines!': ['ENABLE_HANDLE_ZAPPING',],
         'conditions': [
-          ['OS in "linux freebsd openbsd netbsd aix os400 openharmony"', {
+           ['OS in "linux freebsd openbsd netbsd aix os400 openharmony haiku"', {
             'cflags!': [
               '-Os',
             ],

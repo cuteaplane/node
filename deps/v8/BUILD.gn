@@ -4469,7 +4469,8 @@ v8_header_set("v8_internal_headers") {
       # iOS Xcode simulator builds run on an x64 target. iOS and macOS are both
       # based on Darwin and thus POSIX-compliant to a similar degree.
       if (is_linux || is_chromeos || is_mac || is_ios ||
-          target_os == "freebsd" || target_os == "haiku") {
+          target_os == "freebsd") {
+          # for v8_enable_webassembly
         sources += [ "src/trap-handler/handler-inside-posix.h" ]
       } else if (is_win) {
         sources += [ "src/trap-handler/handler-inside-win.h" ]
@@ -5849,7 +5850,7 @@ v8_source_set("v8_base_without_compiler") {
       # iOS Xcode simulator builds run on an x64 target. iOS and macOS are both
       # based on Darwin and thus POSIX-compliant to a similar degree.
       if (is_linux || is_chromeos || is_mac || is_ios ||
-          target_os == "freebsd" || target_os == "haiku") {
+          target_os == "freebsd") {
         sources += [
           "src/trap-handler/handler-inside-posix.cc",
           "src/trap-handler/handler-outside-posix.cc",

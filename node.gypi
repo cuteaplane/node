@@ -322,7 +322,7 @@
         '-lnetwork',
       ],
     }],
-    [ '(OS=="freebsd" or OS=="linux" or OS=="openharmony") and node_shared=="false"'
+    [ '(OS=="freebsd" or OS=="linux" or OS=="openharmony" or OS=="haiku") and node_shared=="false"'
         ' and force_load=="true"', {
       'ldflags': [
         '-Wl,-z,noexecstack',
@@ -384,7 +384,7 @@
         '-lrt'
       ],
     }],
-    [ 'OS in "freebsd linux openharmony"', {
+    [ 'OS in "freebsd linux openharmony haiku"', {
       'ldflags': [ '-Wl,-z,relro',
                    '-Wl,-z,now' ]
     }],
@@ -419,7 +419,7 @@
                 },
               },
               'conditions': [
-                ['OS in "linux freebsd openharmony" and node_shared=="false"', {
+                 ['OS in "linux freebsd openharmony haiku" and node_shared=="false"', {
                   'ldflags': [
                     '-Wl,--whole-archive',
                       '<(obj_dir)/deps/openssl/<(openssl_product)',

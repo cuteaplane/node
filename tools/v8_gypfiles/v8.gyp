@@ -706,7 +706,7 @@
               }],
               ['v8_enable_webassembly==1', {
                 'conditions': [
-                  ['OS in "linux mac ios freebsd openharmony haiku"', {
+                  ['OS in "linux mac ios freebsd openharmony"', {
                     'sources': [
                       '<(V8_ROOT)/src/trap-handler/handler-inside-posix.h',
                     ],
@@ -1170,7 +1170,7 @@
             }],
             ['v8_enable_webassembly==1', {
               'conditions': [
-                ['OS in "linux mac ios freebsd openharmony haiku"', {
+                ['OS in "linux mac ios freebsd openharmony"', {
                   'sources': [
                     '<(V8_ROOT)/src/trap-handler/handler-inside-posix.cc',
                     '<(V8_ROOT)/src/trap-handler/handler-outside-posix.cc',
