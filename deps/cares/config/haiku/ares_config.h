@@ -123,7 +123,7 @@
 /* #undef HAVE_GETRANDOM */
 
 /* Define to 1 if you have `getservbyport_r` */
-#define HAVE_GETSERVBYPORT_R 1
+/* #undef HAVE_GETSERVBYPORT_R */
 
 /* Define to 1 if you have `gettimeofday` */
 #define HAVE_GETTIMEOFDAY 1
