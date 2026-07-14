@@ -252,6 +252,10 @@
         [ 'OS=="openharmony"', {
           'include_dirs': [ 'config/openharmony' ],
           'sources': [ 'config/openharmony/ares_config.h' ],
+        }],
+        [ 'OS=="haiku"', {
+          'include_dirs': [ 'config/haiku' ],
+          'sources': [ 'config/haiku/ares_config.h' ],
         }]
       ]
     }
