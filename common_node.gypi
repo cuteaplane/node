@@ -2,7 +2,7 @@
   'target_defaults': {
     'conditions': [
       # Override common.gypi config to use C++20 for Node.js core only.
-      ['OS in "linux freebsd openbsd solaris android aix os400 cloudabi"', {
+      ['OS in "linux freebsd openbsd solaris android aix os400 cloudabi haiku"', {
         'cflags_cc!': ['-std=gnu++17'],
         'cflags_cc': ['-std=gnu++20'],
       }],

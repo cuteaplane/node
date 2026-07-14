@@ -514,7 +514,7 @@
       'target_name': 'node_text_start',
       'type': 'none',
       'conditions': [
-        [ 'OS in "linux freebsd solaris openharmony" and '
+        [ 'OS in "linux freebsd solaris openharmony haiku" and '
           'target_arch=="x64"', {
           'type': 'static_library',
           'sources': [
@@ -632,7 +632,7 @@
             'OTHER_LDFLAGS': [ '-Wl,-rpath,@loader_path', '-Wl,-rpath,@loader_path/../lib'],
           },
           'conditions': [
-            ['OS=="linux" or OS=="openharmony"', {
+            ['OS=="linux" or OS=="openharmony" or OS=="haiku"', {
                'ldflags': [
                  '-Wl,-rpath,\\$$ORIGIN/../lib'
                ],
@@ -737,7 +737,7 @@
             'src/node_snapshot_stub.cc'
           ],
         }],
-        [ 'OS in "linux freebsd openharmony" and '
+        [ 'OS in "linux freebsd openharmony haiku" and '
           'target_arch=="x64"', {
           'dependencies': [ 'node_text_start' ],
           'ldflags+': [
@@ -962,7 +962,7 @@
           ],
           'defines': [ 'HAVE_SQLITE=1' ],
         }],
-        [ 'OS in "linux freebsd mac solaris openharmony" and '
+        [ 'OS in "linux freebsd mac solaris openharmony haiku" and '
           'target_arch=="x64" and '
           'node_target_type=="executable"', {
           'defines': [ 'NODE_ENABLE_LARGE_CODE_PAGES=1' ],
@@ -1370,7 +1370,7 @@
         [ 'node_shared_libuv=="false"', {
           'dependencies': [ 'deps/uv/uv.gyp:libuv#host' ],
         }],
-        [ 'OS in "linux mac openharmony"', {
+        [ 'OS in "linux mac openharmony haiku"', {
           'defines': ['NODE_JS2C_USE_STRING_LITERALS'],
         }],
         [ 'debug_node=="true"', {
