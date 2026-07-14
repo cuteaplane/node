@@ -15,6 +15,7 @@
 
 #include <errno.h>
 #include <fcntl.h>
+#include <OS.h>
 #include <stdarg.h>
 #include <strings.h>
 #include <sys/mman.h>
@@ -52,19 +53,11 @@ std::vector<OS::MemoryRange> OS::GetFreeMemoryRangesWithin(
 }
 
 Stack::StackSlot Stack::ObtainCurrentThreadStackStart() {
-  pthread_attr_t attr;
-  int error;
-  pthread_attr_init(&attr);
-  error = pthread_getattr_np(pthread_self(), &attr);
-  if (!error) {
-    void* base;
-    size_t size;
-    error = pthread_attr_getstack(&attr, &base, &size);
-    CHECK(!error);
-    pthread_attr_destroy(&attr);
-    return reinterpret_cast<uint8_t*>(base) + size;
+  thread_info info;
+  status_t status = get_thread_info(find_thread(nullptr), &info);
+  if (status == B_OK) {
+    return reinterpret_cast<uint8_t*>(info.stack_end);
   }
-  pthread_attr_destroy(&attr);
   return nullptr;
 }
 
